@@ -10,7 +10,6 @@ void main()
 }
 
 //######################_==_YOYO_SHADER_MARKER_==_######################@~
-
 #define OCTAVES 5 // CHANGE THIS AS YOU WISH
 
 #if (OCTAVES > 1)

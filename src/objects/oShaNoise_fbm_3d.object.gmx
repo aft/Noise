@@ -69,13 +69,13 @@ shader_set(_sh);
     shader_set_uniform_f(seed, _seed);
 
     var pers = shader_get_uniform(_sh, "u_persistence");
-    shader_set_uniform_f(pers, 0.5);
+    shader_set_uniform_f(pers, 0.50);
     
     var freq = shader_get_uniform(_sh, "u_freq");
     shader_set_uniform_f(freq, 1.0);
     
     var scale = shader_get_uniform(_sh, "u_scale");
-    shader_set_uniform_f(scale, 20);
+    shader_set_uniform_f(scale, 10.0);
     
     draw_rectangle(0, 0, room_width, room_height, false);
 shader_reset();

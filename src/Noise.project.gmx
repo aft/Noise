@@ -117,6 +117,9 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\index</room>
+    <room>rooms\GPU_sha_fbm_1d</room>
+    <room>rooms\GPU_sha_fbm_2d</room>
+    <room>rooms\GPU_sha_fbm_3d</room>
     <room>rooms\GPU_sha_flow_2d_fractal</room>
     <room>rooms\GPU_sha_flow_2d_fire</room>
     <room>rooms\GPU_sha_simplex_4d</room>
@@ -128,9 +131,6 @@
     <room>rooms\GPU_sha_fbm_demo</room>
     <room>rooms\GPU_sha_fbm_3d_fractal</room>
     <room>rooms\GPU_sha_fbm_2d3d_demo</room>
-    <room>rooms\GPU_sha_fbm_3d</room>
-    <room>rooms\GPU_sha_fbm_2d</room>
-    <room>rooms\GPU_sha_fbm_1d</room>
     <room>rooms\CPU_improved_3d</room>
     <room>rooms\CPU_perlin_3d</room>
     <room>rooms\CPU_simplex_3d</room>
