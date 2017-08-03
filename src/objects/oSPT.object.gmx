@@ -48,6 +48,7 @@ Test1Name          = "Improved Noise 3D"; //Name of test 1 goes here
 Test2Name          = "Fast (!) Improved Noise 3D"; //Name of test 2 goes here
 Test3Name          = "Perlin Noise 3D"; //Name of test 3 goes here
 Test4Name          = "Simplex Noise 3D"; //Name of test 4 goes here
+Test5Name          = "Value Noise 3D"; //Name of test 5 goes here
 
 //Timing variables
 test1_start_time   = 0;
@@ -62,10 +63,14 @@ test3_end_time     = 0;
 test4_start_time   = 0;
 test4_end_time     = 0;
 
+test5_start_time   = 0;
+test5_end_time     = 0;
+
 test1_run_time     = 0;
 test2_run_time     = 0;
 test3_run_time     = 0;
 test4_run_time     = 0;
+test5_run_time     = 0;
 
 test_iterations    = 100000;
 
@@ -113,7 +118,7 @@ variable additional_instructions_text.
 additional_instructions_text = ""; 
 
 instructions_message = string(test_project_title) + " ##" +
-                       "This test compares the performances of " + string(Test1Name) + ", " + string(Test2Name) + ", " + string(Test3Name) + ", " + string(Test4Name) + " #" +
+                       "This test compares the performances of " + string(Test1Name) + ", " + string(Test2Name) + ", " + string(Test3Name) + ", " + string(Test4Name) + ", and " + string(Test5Name) + " ##" +
                        "Each method is tested " + string(test_iterations) + " times.  #" +
                        "Results are then displayed in microseconds (lower is better).##" +
                        "Press Enter key to run the test. Execution will take a few seconds and then results will display.##" +
@@ -417,6 +422,60 @@ test4_end_time   = get_timer();
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Test5 Pre-test setup
+//Any pre-test setup code should go here, before the timer starts
+scr_vn_init();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Run Test5
+
+//Test5
+test5_start_time = get_timer();
+
+repeat(test_iterations)
+{
+   var val = scr_vn_noise(0, 255, 4, 1, .1, 1, 1, 1);
+
+}
+test5_end_time   = get_timer();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Calculate Test results
 var order = ds_list_create();
 test1_run_time = test1_end_time - test1_start_time;
@@ -427,6 +486,8 @@ test3_run_time = test3_end_time - test3_start_time;
 ds_list_add(order, test3_run_time);
 test4_run_time = test4_end_time - test4_start_time;
 ds_list_add(order, test4_run_time);
+test5_run_time = test5_end_time - test5_start_time;
+ds_list_add(order, test5_run_time);
 
 faster = "Neither" 
 order = ds_list_sort(order, true);
@@ -435,6 +496,7 @@ if (order[|0] == test1_run_time) faster = Test1Name;
 if (order[|0] == test2_run_time) faster = Test2Name;
 if (order[|0] == test3_run_time) faster = Test3Name;
 if (order[|0] == test4_run_time) faster = Test4Name;
+if (order[|0] == test5_run_time) faster = Test5Name;
 
 ds_list_destroy(order);
 
@@ -462,7 +524,8 @@ ds_list_destroy(order);
 run_complete_message =  string(Test1Name) + " took: " + string(test1_run_time) + " microseconds (avg " + string_format(test1_run_time/test_iterations, -1, 8) + " microseconds per iteration)#" + 
                         string(Test2Name) + " took: " + string(test2_run_time) + " microseconds (avg " + string_format(test2_run_time/test_iterations, -1, 8) + " microseconds per iteration)#" + 
                         string(Test3Name) + " took: " + string(test3_run_time) + " microseconds (avg " + string_format(test3_run_time/test_iterations, -1, 8) + " microseconds per iteration)#" + 
-                        string(Test4Name) + " took: " + string(test4_run_time) + " microseconds (avg " + string_format(test4_run_time/test_iterations, -1, 8) + " microseconds per iteration)##"  + 
+                        string(Test4Name) + " took: " + string(test4_run_time) + " microseconds (avg " + string_format(test4_run_time/test_iterations, -1, 8) + " microseconds per iteration)#" + 
+                        string(Test5Name) + " took: " + string(test5_run_time) + " microseconds (avg " + string_format(test5_run_time/test_iterations, -1, 8) + " microseconds per iteration)##"  + 
                         string(faster) + " was faster.##" +
                         "Press 'Enter' key to run the test again.#" + 
                         "Press 'R' key to re-start the game.";

@@ -14,6 +14,7 @@ void main()
 //######################_==_YOYO_SHADER_MARKER_==_######################@~
 
 
+
 // Adapted for GMS by Cem Baspinar. Shadertoy page for it linked below.
 //
 // A Note from @aft: 
@@ -38,7 +39,7 @@ void main()
 #define OCTAVES 8 // CHANGE THIS AS YOU WISH
 
 #if (OCTAVES > 1)
-#define NOISE getnoise
+#define NOISE getnoise_fbm
 #else
 #define NOISE getnoise_single
 #endif
@@ -63,11 +64,13 @@ vec2 mod289(vec2 x) {
 }
 
 vec3 permute(vec3 x) {
-  return mod289(((x*34.0)+1.0)*x);
+  return mod289(((x*34.0)+1.0)*x); 
 }
 
-float snoise(vec2 v)
-  {
+float snoise(vec2 v) {
+
+  v += sin(u_seed * 1.78291351) * 1e6; // seed addition by shifting
+
   const vec4 C = vec4(0.211324865405187,  // (3.0-sqrt(3.0))/6.0
                       0.366025403784439,  // 0.5*(sqrt(3.0)-1.0)
                      -0.577350269189626,  // -1.0 + 2.0 * C.x
@@ -113,25 +116,12 @@ float snoise(vec2 v)
 
 // Original code ends here.
 
-
-// Salt is added to limit the x,y values. No matter what you input,
-// it returns a float around ~ 0-6000.
-// I don't claim it to be undredictable, fast and uniform. 
-// Feel free to adjust.
-float salt(float seed) {
-    if (seed == 0.) seed += 0.01;
-    float a = mod(seed, 5901.);
-    float b = mod(a,2.)==0. ? -0.01 : 0.11; 
-return a+4179./sqrt(a*5.)*b+1001.*a/seed;
-}
-
-
 float getnoise_single(int octaves, float u_persistence, float u_freq, vec2 coords) {
     float sum = snoise(coords*u_freq); 
     return sum * .5 + .5;
 }
 
-float getnoise(int octaves, float u_persistence, float u_freq, vec2 coords) {
+float getnoise_fbm(int octaves, float u_persistence, float u_freq, vec2 coords) {
     float amp= 1.; 
     float maxamp = 0.;
     float sum = 0.;
@@ -144,12 +134,10 @@ float getnoise(int octaves, float u_persistence, float u_freq, vec2 coords) {
     return (sum / maxamp) * .5 + .5;
 }
 
-
 void main() {
 
-    float ss = salt(u_seed/u_resolution.x);
     vec2 p = vec2(v_vPosition.xy/u_resolution.x * u_scale);
-    float value = NOISE(OCTAVES, u_persistence, u_freq, p+vec2(ss, 0.));
+    float value = NOISE(OCTAVES, u_persistence, u_freq, p);
     gl_FragColor = vec4(vec3(value), 1.0);
     
 }

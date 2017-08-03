@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>show_debug_overlay(true);
 _i = 0;
-_sh = sha_noise_fbm_demo;
+_sh = sha_noise_value_1d;
 _seed = 1;
 
 if (!shader_is_compiled(_sh)) {
@@ -69,15 +69,15 @@ shader_set(_sh);
     shader_set_uniform_f(seed, _seed);
 
     var pers = shader_get_uniform(_sh, "u_persistence");
-    shader_set_uniform_f(pers, 0.65);
+    shader_set_uniform_f(pers, 0.5);
     
     var freq = shader_get_uniform(_sh, "u_freq");
-    shader_set_uniform_f(freq, 16.0);
+    shader_set_uniform_f(freq, 1.0);
     
     draw_rectangle(0, 0, room_width, room_height, false);
 shader_reset();
 
-
+window_set_caption("Real FPS: " + string(fps_real));
 </string>
           </argument>
         </arguments>

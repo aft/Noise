@@ -10,10 +10,11 @@ void main()
 }
 
 //######################_==_YOYO_SHADER_MARKER_==_######################@~
+
 #define OCTAVES 5 // CHANGE THIS AS YOU WISH
 
 #if (OCTAVES > 1)
-#define NOISE getnoise2d
+#define NOISE getnoise2d_fbm
 #else
 #define NOISE getnoise2d_single
 #endif
@@ -39,7 +40,10 @@ uniform float u_scale; // 20.
 // They are tuned to avoid visible periodicity for both positive and
 // negative coordinates within a few orders of magnitude.
 
-float hash(vec2 p) { return fract(1e4 * sin(17.0 * p.x + p.y * 0.1) * (0.1 + abs(sin(p.y * 13.0 + p.x)))); }
+float hash(vec2 p) {
+    float salt = fract(sin(u_seed * 0.3183099));
+    return fract(1e4 * sin(17.0 * p.x + p.y * 0.1 + salt) * (0.1 + abs(sin(p.y * 13.0 + p.x + salt)))); 
+}
 
 float noise(vec2 x) {
     vec2 i = floor(x);
@@ -52,22 +56,12 @@ float noise(vec2 x) {
     return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
 }
 
-// Salt is added to limit the x,y values. No matter what you input,
-// it returns a float around ~ 0-6001.
-// I don't claim it to be undredictable, fast and uniform. 
-// Feel free to adjust.
-float salt(float seed) {
-    if (seed == 0.) seed += 0.01;
-    float a = mod(seed, 5901.);
-    float b = mod(a,2.)==0. ? -0.01 : 0.11; 
-    return mod(a+4179./sqrt(a*5.)*b+1001.*a/seed, 6001.);
-}
 
 float getnoise2d_single(int octaves, float u_persistence, float u_freq, vec2 coords) {
     return noise(coords*u_freq);
 }
 
-float getnoise2d(int octaves, float u_persistence, float u_freq, vec2 coords) {
+float getnoise2d_fbm(int octaves, float u_persistence, float u_freq, vec2 coords) {
     float amp= .5; 
     float maxamp = 0.;
     float sum = 0.;
@@ -83,9 +77,8 @@ float getnoise2d(int octaves, float u_persistence, float u_freq, vec2 coords) {
 }
 
 void main() {
-    float ss = salt(u_seed);
     vec2 p = vec2(v_vPosition.xy / u_resolution.x * u_scale);
-    float value = NOISE(OCTAVES, u_persistence, u_freq, p+vec2(ss));
+    float value = NOISE(OCTAVES, u_persistence, u_freq, p);
     gl_FragColor = vec4(vec3(value), 1.);
 }
 

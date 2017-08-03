@@ -62,11 +62,24 @@
         <script>scripts\_sn_dot4.gml</script>
       </scripts>
     </scripts>
-    <scripts name="other">
+    <scripts name="value noise">
+      <script>scripts\scr_vn_init.gml</script>
+      <script>scripts\scr_vn_set_seed.gml</script>
+      <script>scripts\scr_vn_get_seed.gml</script>
+      <script>scripts\scr_vn_noise.gml</script>
+      <scripts name="private">
+        <script>scripts\_vn_hash2d.gml</script>
+        <script>scripts\_vn_hash3d.gml</script>
+        <script>scripts\_vn_noise2d.gml</script>
+        <script>scripts\_vn_noise3d.gml</script>
+      </scripts>
+    </scripts>
+    <scripts name="utils">
       <script>scripts\draw_text_clickable.gml</script>
       <script>scripts\scr_seed_salt.gml</script>
       <script>scripts\scr_map.gml</script>
     </scripts>
+    <script>scripts\RESOURCES.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\sha_noise_flow_2d_fire.shader</shader>
@@ -77,12 +90,11 @@
     <shader type="GLSLES">shaders\sha_noise_perlin_4d.shader</shader>
     <shader type="GLSLES">shaders\sha_noise_perlin_3d.shader</shader>
     <shader type="GLSLES">shaders\sha_noise_perlin_2d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_fbm_demo.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_fbm_3d_fractal.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_fbm_2d3d_demo.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_fbm_3d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_fbm_2d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_fbm_1d.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_value_demo.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_value_2d3d_demo.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_value_1d.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_value_2d.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_value_3d.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\font0</font>
@@ -95,6 +107,7 @@
         <object>objects\oNoise_pn</object>
         <object>objects\oNoise_sn</object>
         <object>objects\oNoise_in</object>
+        <object>objects\oNoise_vn</object>
       </objects>
       <objects name="GPU">
         <object>objects\oShaNoise_flow_2d_fractal</object>
@@ -105,35 +118,34 @@
         <object>objects\oShaNoise_pn2d</object>
         <object>objects\oShaNoise_pn3d</object>
         <object>objects\oShaNoise_pn4d</object>
-        <object>objects\oShaNoise_fbm_demo</object>
-        <object>objects\oShaNoise_fbm_1d</object>
-        <object>objects\oShaNoise_fbm_2d</object>
-        <object>objects\oShaNoise_fbm_3d</object>
-        <object>objects\oShaNoise_fbm_2d3d_demo</object>
-        <object>objects\oShaNoise_fbm_3d_fractal</object>
+        <object>objects\oShaNoise_value_demo</object>
+        <object>objects\oShaNoise_value_1d</object>
+        <object>objects\oShaNoise_value_2d</object>
+        <object>objects\oShaNoise_value_3d</object>
+        <object>objects\oShaNoise_value_2d3d_demo</object>
       </objects>
     </objects>
     <object>objects\oRoomSwitcher</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\GPU_sha_simplex_2d</room>
     <room>rooms\index</room>
-    <room>rooms\GPU_sha_fbm_1d</room>
-    <room>rooms\GPU_sha_fbm_2d</room>
-    <room>rooms\GPU_sha_fbm_3d</room>
+    <room>rooms\GPU_sha_value_1d</room>
+    <room>rooms\GPU_sha_value_2d</room>
+    <room>rooms\GPU_sha_value_3d</room>
     <room>rooms\GPU_sha_flow_2d_fractal</room>
     <room>rooms\GPU_sha_flow_2d_fire</room>
     <room>rooms\GPU_sha_simplex_4d</room>
     <room>rooms\GPU_sha_simplex_3d</room>
-    <room>rooms\GPU_sha_simplex_2d</room>
     <room>rooms\GPU_sha_perlin_4d</room>
     <room>rooms\GPU_sha_perlin_3d</room>
     <room>rooms\GPU_sha_perlin_2d</room>
-    <room>rooms\GPU_sha_fbm_demo</room>
-    <room>rooms\GPU_sha_fbm_3d_fractal</room>
-    <room>rooms\GPU_sha_fbm_2d3d_demo</room>
+    <room>rooms\GPU_sha_value_demo</room>
+    <room>rooms\GPU_sha_value_2d3d_demo</room>
     <room>rooms\CPU_improved_3d</room>
     <room>rooms\CPU_perlin_3d</room>
     <room>rooms\CPU_simplex_3d</room>
+    <room>rooms\CPU_value_3d</room>
     <room>rooms\room_benchmark</room>
   </rooms>
   <help>

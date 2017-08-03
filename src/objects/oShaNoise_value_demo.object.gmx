@@ -27,60 +27,14 @@
             <kind>1</kind>
             <string>show_debug_overlay(true);
 _i = 0;
-_sh = sha_noise_simplex_2d;
-_seed = 20;
+_sh = sha_noise_value_demo;
+_seed = 1;
 
 if (!shader_is_compiled(_sh)) {
     game_end();
 }
 
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="61">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>_seed--;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="60">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>_seed++;
 </string>
           </argument>
         </arguments>
@@ -119,9 +73,6 @@ shader_set(_sh);
     
     var freq = shader_get_uniform(_sh, "u_freq");
     shader_set_uniform_f(freq, 16.0);
-    
-    var scale = shader_get_uniform(_sh, "u_scale");
-    shader_set_uniform_f(scale, 1.0);
     
     draw_rectangle(0, 0, room_width, room_height, false);
 shader_reset();

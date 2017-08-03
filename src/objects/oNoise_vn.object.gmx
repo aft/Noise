@@ -25,16 +25,37 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>show_debug_overlay(true);
-_i = 0;
-_sh = sha_noise_fbm_1d;
-_seed = 1;
+            <string>_i = 0;
+scr_vn_init();
+scr_vn_set_seed(1212121);
+show_debug_overlay(true);
 
-if (!shader_is_compiled(_sh)) {
-    game_end();
-}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="53">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//show_debug_message(string(scr_in_noise(1212122, 6, 1, _i, _i, 0)));
 
-
+show_debug_message(string(_i) +": "+ string(_vn_noise3d(_i, 1, 1)));
+_i += 10;
 </string>
           </argument>
         </arguments>
@@ -57,46 +78,20 @@ if (!shader_is_compiled(_sh)) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>_i++;
-shader_set(_sh);
-    var frame = shader_get_uniform(_sh, "u_frame");
-    shader_set_uniform_f(frame, _i);
-    
-    var res = shader_get_uniform(_sh, "u_resolution");
-    shader_set_uniform_f(res, room_width, room_height);
-    
-    var seed = shader_get_uniform(_sh, "u_seed");
-    shader_set_uniform_f(seed, _seed);
+            <string>for (var i=0; i&lt;150; i++) {
+    for (var j=0; j &lt; 150; j++) {
+        var val = scr_vn_noise(0, 255, 1, 0.75, .05, i, j, _i);
+        draw_set_color(make_color_hsv(0, 0, val));
+        draw_point(x+i, y+j);
+    }
+}
+_i++;
+//game_end();
 
-    var pers = shader_get_uniform(_sh, "u_persistence");
-    shader_set_uniform_f(pers, 0.5);
-    
-    var freq = shader_get_uniform(_sh, "u_freq");
-    shader_set_uniform_f(freq, 1.0);
-    
-    draw_rectangle(0, 0, room_width, room_height, false);
-shader_reset();
-
-window_set_caption("Real FPS: " + string(fps_real));
+   
 </string>
           </argument>
         </arguments>
-      </action>
-    </event>
-    <event eventtype="10" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>331</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_restart_game</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
       </action>
     </event>
   </events>

@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>show_debug_overlay(true);
 _i = 0;
-_sh = sha_noise_fbm_3d;
+_sh = sha_noise_value_2d;
 _seed = 1;
 
 if (!shader_is_compiled(_sh)) {
@@ -75,7 +75,7 @@ shader_set(_sh);
     shader_set_uniform_f(freq, 1.0);
     
     var scale = shader_get_uniform(_sh, "u_scale");
-    shader_set_uniform_f(scale, 10.0);
+    shader_set_uniform_f(scale, 20.0);
     
     draw_rectangle(0, 0, room_width, room_height, false);
 shader_reset();
