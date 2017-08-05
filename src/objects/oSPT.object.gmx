@@ -83,6 +83,8 @@ test_run_complete  = 2;
 
 state              = instructions;
 started            = false;
+
+show_debug_overlay(false);
 </string>
           </argument>
         </arguments>

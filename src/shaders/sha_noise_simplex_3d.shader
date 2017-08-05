@@ -35,10 +35,10 @@ void main()
 // Thank you Stefan Gustavson for all the work you have done.
 
 
-#define OCTAVES 8 // CHANGE THIS AS YOU WISH
+#define OCTAVES 5 // CHANGE THIS AS YOU WISH
 
 #if (OCTAVES > 1)
-#define NOISE getnoise
+#define NOISE getnoise_fbm
 #else
 #define NOISE getnoise_single
 #endif
@@ -66,13 +66,14 @@ vec4 permute(vec4 x) {
      return mod289(((x*34.0)+1.0)*x);
 }
 
-vec4 taylorInvSqrt(vec4 r)
-{
+vec4 taylorInvSqrt(vec4 r) {
   return 1.79284291400159 - 0.85373472095314 * r;
 }
 
-float snoise(vec3 v)
-  { 
+float snoise(vec3 v) {
+
+  v += sin(u_seed * 1.78291351) * 1e6; // seed addition by shifting pos.
+
   const vec2  C = vec2(0.1666666666666667, 0.3333333333333333) ; // 1.0/6.0, 1.0/3.0
   const vec4  D = vec4(0.0, 0.5, 1.0, 2.0);
 
@@ -149,8 +150,7 @@ float getnoise_single(int octaves, float u_persistence, float u_freq, vec3 coord
     return sum * .5 + .5;
 }
 
-
-float getnoise(int octaves, float u_persistence, float u_freq, vec3 coords) {
+float getnoise_fbm(int octaves, float u_persistence, float u_freq, vec3 coords) {
 
     float amp= 1.; 
     float maxamp = 0.;
@@ -166,23 +166,10 @@ float getnoise(int octaves, float u_persistence, float u_freq, vec3 coords) {
     return (sum / maxamp) * .5 + .5;
 }
 
-
-// Salt is added to limit the x,y values. No matter what you input,
-// it returns a float around ~ 0-6000.
-// I don't claim it to be undredictable, fast and uniform. 
-// Feel free to adjust.
-float salt(float seed) {
-    if (seed == 0.) seed += 0.01;
-    float a = mod(seed, 5901.);
-    float b = mod(a,2.)==0. ? -0.01 : 0.11; 
-    return a+4179./sqrt(a*5.)*b+1001.*a/seed;
-}
-
 void main() {
 
-    float ss = salt(u_seed/u_resolution.x);
     vec3 p = vec3(v_vPosition.xyz/u_resolution.x * u_scale);
-    float value = NOISE(OCTAVES, u_persistence, u_freq, p+vec3(ss, ss, 0.));
+    float value = NOISE(OCTAVES, u_persistence, u_freq, p);
     gl_FragColor = vec4(vec3(value), 1.0);
     
 }

@@ -36,7 +36,7 @@ void main()
 // Thank you Stefan Gustavson for all the work you have done.
 
 
-#define OCTAVES 8 // CHANGE THIS AS YOU WISH
+#define OCTAVES 5 // CHANGE THIS AS YOU WISH
 
 #if (OCTAVES > 1)
 #define NOISE getnoise_fbm
@@ -69,7 +69,7 @@ vec3 permute(vec3 x) {
 
 float snoise(vec2 v) {
 
-  v += sin(u_seed * 1.78291351) * 1e6; // seed addition by shifting
+  v += sin(u_seed * 1.78291351) * 1e6; // seed addition by shifting pos.
 
   const vec4 C = vec4(0.211324865405187,  // (3.0-sqrt(3.0))/6.0
                       0.366025403784439,  // 0.5*(sqrt(3.0)-1.0)
