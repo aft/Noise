@@ -11,7 +11,6 @@
   <sounds name="sound"/>
   <sprites name="sprites"/>
   <backgrounds name="background">
-    <background>background\lutnoise</background>
     <background>background\bg_index</background>
   </backgrounds>
   <paths name="paths"/>
@@ -82,19 +81,19 @@
     <script>scripts\RESOURCES.gml</script>
   </scripts>
   <shaders name="shaders">
-    <shader type="GLSLES">shaders\sha_noise_flow_2d_fire.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_flow_2d_fractal.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_simplex_4d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_simplex_3d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_simplex_2d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_perlin_4d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_perlin_3d.shader</shader>
     <shader type="GLSLES">shaders\sha_noise_perlin_2d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_value_demo.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_value_2d3d_demo.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_perlin_3d.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_perlin_4d.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_simplex_2d.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_simplex_3d.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_simplex_4d.shader</shader>
     <shader type="GLSLES">shaders\sha_noise_value_1d.shader</shader>
     <shader type="GLSLES">shaders\sha_noise_value_2d.shader</shader>
     <shader type="GLSLES">shaders\sha_noise_value_3d.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_value_demo.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_value_2d3d_demo.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_flow_2d_fractal.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_flow_2d_fire.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\font0</font>
