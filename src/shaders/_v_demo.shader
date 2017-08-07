@@ -1,3 +1,7 @@
+/*
+THIS SHADER IS DEMO PURPOSES ONLY. DO NOT USE IT
+*/
+
 attribute vec3 in_Position;
 varying vec3 v_vPosition;
 
@@ -10,8 +14,6 @@ void main()
 }
 
 //######################_==_YOYO_SHADER_MARKER_==_######################@~
-
-
 // Minor edits & seed support (offsetting) by Cem Baspinar. 
 // https://www.shadertoy.com/view/4djcDG
 // Reuse permitted under the BSD license.

@@ -30,7 +30,7 @@ randomize();
 
 _i = 0;
 
-_shader = sha_noise_perlin_3d_demo;
+_shader = _p_demo;
 _seed = 0;
 _pers = 0.65;
 _freq = 16.0;
@@ -45,9 +45,9 @@ scr_cbDataGUI_create();
 
 // shader
 var dsm = ds_map_create();
-ds_map_add(dsm, "Perlin Noise", real(asset_get_index("sha_noise_perlin_3d_demo")));
-ds_map_add(dsm, "Simplex Noise", real(asset_get_index("sha_noise_simplex_3d_demo")));
-ds_map_add(dsm, "Value Noise", real(asset_get_index("sha_noise_value_3d_demo")));
+ds_map_add(dsm, "Perlin Noise", real(asset_get_index("_p_demo")));
+ds_map_add(dsm, "Simplex Noise", real(asset_get_index("_s_demo")));
+ds_map_add(dsm, "Value Noise", real(asset_get_index("_v_demo")));
 
 scr_cbDataGUI_add(oGPUNoise, "shader", cbData_type.number, -1, dsm);
 scr_cbDataGUI_set_value(oGPUNoise, "shader", _shader);

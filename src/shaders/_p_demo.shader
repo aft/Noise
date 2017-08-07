@@ -1,3 +1,6 @@
+/*
+THIS SHADER IS DEMO PURPOSES ONLY. DO NOT USE IT
+*/
 
 attribute vec3 in_Position;
 varying vec3 v_vPosition;

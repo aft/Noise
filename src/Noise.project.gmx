@@ -576,21 +576,31 @@
     <script>scripts\scr_generate_random_seed.gml</script>
   </scripts>
   <shaders name="shaders">
-    <shader type="GLSLES">shaders\sha_noise_perlin_2d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_perlin_3d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_perlin_4d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_simplex_2d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_simplex_3d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_simplex_4d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_value_1d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_value_2d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_value_3d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_value_fractal.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_flow_2d_fractal.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_flow_2d_fire.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_perlin_3d_demo.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_simplex_3d_demo.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_value_3d_demo.shader</shader>
+    <shaders name="perlin noise glsles">
+      <shader type="GLSLES">shaders\sha_noise_perlin_2d.shader</shader>
+      <shader type="GLSLES">shaders\sha_noise_perlin_3d.shader</shader>
+      <shader type="GLSLES">shaders\sha_noise_perlin_4d.shader</shader>
+    </shaders>
+    <shaders name="simplex noise glsles">
+      <shader type="GLSLES">shaders\sha_noise_simplex_2d.shader</shader>
+      <shader type="GLSLES">shaders\sha_noise_simplex_3d.shader</shader>
+      <shader type="GLSLES">shaders\sha_noise_simplex_4d.shader</shader>
+    </shaders>
+    <shaders name="value noise glsles">
+      <shader type="GLSLES">shaders\sha_noise_value_1d.shader</shader>
+      <shader type="GLSLES">shaders\sha_noise_value_2d.shader</shader>
+      <shader type="GLSLES">shaders\sha_noise_value_3d.shader</shader>
+      <shader type="GLSLES">shaders\sha_noise_value_fractal.shader</shader>
+    </shaders>
+    <shaders name="flow noise glsles">
+      <shader type="GLSLES">shaders\sha_noise_flow_2d_fractal.shader</shader>
+      <shader type="GLSLES">shaders\sha_noise_flow_2d_fire.shader</shader>
+    </shaders>
+    <shaders name="demos">
+      <shader type="GLSLES">shaders\_p_demo.shader</shader>
+      <shader type="GLSLES">shaders\_s_demo.shader</shader>
+      <shader type="GLSLES">shaders\_v_demo.shader</shader>
+    </shaders>
   </shaders>
   <fonts name="fonts">
     <font>fonts\cbGUIFont</font>
