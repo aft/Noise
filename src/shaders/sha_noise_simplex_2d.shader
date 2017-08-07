@@ -15,6 +15,8 @@ void main()
 
 
 
+
+
 // Adapted for GMS by Cem Baspinar. Shadertoy page for it linked below.
 //
 // A Note from @aft: 
@@ -136,7 +138,7 @@ float getnoise_fbm(int octaves, float u_persistence, float u_freq, vec2 coords) 
 
 void main() {
 
-    vec2 p = vec2(v_vPosition.xy/u_resolution.x * u_scale);
+    vec2 p = v_vPosition.xy / u_resolution.x * u_scale;
     float value = NOISE(OCTAVES, u_persistence, u_freq, p);
     gl_FragColor = vec4(vec3(value), 1.0);
     

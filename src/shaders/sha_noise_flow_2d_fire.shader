@@ -18,11 +18,11 @@ void main()
 
 
 
+
 #ifdef GL_ES
 precision mediump float;
 #endif
 
-uniform float u_time;
 uniform float u_frame;
 uniform vec2 u_resolution;
 uniform float u_scale;

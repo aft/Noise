@@ -7,11 +7,93 @@
   <NewExtensions>
     <extension index="0">extensions\Simple Performance Test</extension>
     <extension index="1">extensions\NoisePack CPU</extension>
+    <extension index="2">extensions\cbDataGUI 1.4</extension>
   </NewExtensions>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprites name="cbGUI">
+      <sprites name="textbox">
+        <sprite>sprites\spr_cbGUI_textbox</sprite>
+      </sprites>
+      <sprites name="slider">
+        <sprite>sprites\spr_cbGUI_slider</sprite>
+        <sprite>sprites\spr_cbGUI_slider_i</sprite>
+        <sprite>sprites\spr_cbGUI_slider_btn</sprite>
+      </sprites>
+      <sprites name="checkbox">
+        <sprite>sprites\spr_cbGUI_checkbox</sprite>
+        <sprite>sprites\spr_cbGUI_checkbox_checked</sprite>
+        <sprite>sprites\spr_cbGUI_checkbox_tick</sprite>
+      </sprites>
+      <sprites name="radio">
+        <sprite>sprites\spr_cbGUI_radio</sprite>
+        <sprite>sprites\spr_cbGUI_radio_checked</sprite>
+        <sprite>sprites\spr_cbGUI_radio_tick</sprite>
+      </sprites>
+      <sprites name="button">
+        <sprite>sprites\spr_cbGUI_button_normal</sprite>
+      </sprites>
+      <sprites name="dropdown">
+        <sprite>sprites\spr_cbGUI_dropdown</sprite>
+        <sprite>sprites\spr_cbGUI_dropdown_ico</sprite>
+        <sprite>sprites\spr_cbGUI_dropdown_pop</sprite>
+        <sprite>sprites\spr_cbGUI_dropdown_sep</sprite>
+      </sprites>
+      <sprites name="colorpicker">
+        <sprite>sprites\spr_cbGUI_colorpicker</sprite>
+        <sprite>sprites\spr_cbGUI_colorslider</sprite>
+        <sprite>sprites\spr_cbGUI_colorpicker_mask</sprite>
+      </sprites>
+      <sprites name="misc">
+        <sprite>sprites\spr_cbGUI_1x1</sprite>
+        <sprite>sprites\ico_colorpicker</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="cbDataGUI">
+      <sprites name="textbox">
+        <sprite>sprites\spr_cbDataGUI_textbox</sprite>
+        <sprite>sprites\spr_cbDataGUI_textbox_small</sprite>
+      </sprites>
+      <sprites name="slider">
+        <sprite>sprites\spr_cbDataGUI_slider</sprite>
+      </sprites>
+      <sprites name="checkbox">
+        <sprite>sprites\spr_cbDataGUI_checkbox</sprite>
+        <sprite>sprites\spr_cbDataGUI_checkbox_pressed</sprite>
+        <sprite>sprites\spr_cbDataGUI_checkbox_tick</sprite>
+      </sprites>
+      <sprites name="image_buttons">
+        <sprite>sprites\spr_cbDataGUI_ib_new</sprite>
+        <sprite>sprites\spr_cbDataGUI_ib_save</sprite>
+        <sprite>sprites\spr_cbDataGUI_ib_revert</sprite>
+        <sprite>sprites\spr_cbDataGUI_ib_del</sprite>
+        <sprite>sprites\spr_cbDataGUI_ib_code</sprite>
+      </sprites>
+      <sprites name="dropdown">
+        <sprite>sprites\spr_cbDataGUI_dropdown_ico</sprite>
+        <sprite>sprites\spr_cbDataGUI_dropdown</sprite>
+      </sprites>
+      <sprites name="folder">
+        <sprite>sprites\spr_cbDataGUI_folder_arrow</sprite>
+      </sprites>
+      <sprites name="tooltip">
+        <sprite>sprites\spr_cbDataGUI_tooltip</sprite>
+        <sprite>sprites\spr_cbDataGUI_tooltip_seperator</sprite>
+        <sprite>sprites\spr_cbDataGUI_tooltip_arrow</sprite>
+        <sprite>sprites\spr_cbDataGUI_tooltip_icon</sprite>
+      </sprites>
+      <sprites name="mouse">
+        <sprite>sprites\spr_cbDataGUI_cursor_normal</sprite>
+      </sprites>
+      <sprites name="misc">
+        <sprite>sprites\spr_cbDataGUI_1x1</sprite>
+      </sprites>
+    </sprites>
+  </sprites>
   <backgrounds name="background">
-    <background>background\bg_index</background>
+    <background>background\bg_index1</background>
+    <background>background\bg_index2</background>
+    <background>background\bg_index3</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -79,6 +161,419 @@
       <script>scripts\scr_map.gml</script>
     </scripts>
     <script>scripts\RESOURCES.gml</script>
+    <scripts name="extensions">
+      <scripts name="cbGUI">
+        <scripts name="parent">
+          <scripts name="private">
+            <scripts name="callback handlers">
+              <script>scripts\_scr_cbGUI_onChange_cb_handler.gml</script>
+              <script>scripts\_scr_cbGUI_onChange_cb_handler_x2.gml</script>
+              <script>scripts\_scr_cbGUI_onRelease_cb_handler.gml</script>
+              <script>scripts\_scr_cbGUI_onSubmit_cb_handler.gml</script>
+              <script>scripts\_scr_cbGUI_onMouseOver_cb_handler.gml</script>
+              <script>scripts\_scr_cbGUI_onMouseOut_cb_handler.gml</script>
+              <script>scripts\_scr_cbGUI_onMouseDown_cb_handler.gml</script>
+              <script>scripts\_scr_cbGUI_onMouseUp_cb_handler.gml</script>
+            </scripts>
+            <script>scripts\_scr_cbGUI_setactive.gml</script>
+            <script>scripts\_scr_cbGUI_set_target.gml</script>
+            <script>scripts\_scr_cbGUI_unset_target.gml</script>
+            <script>scripts\_scr_cbGUI_get_target.gml</script>
+            <script>scripts\_scr_cbGUI_get_target_var.gml</script>
+            <script>scripts\_scr_cbGUI_remote_handler.gml</script>
+          </scripts>
+          <scripts name="public">
+            <script>scripts\scr_cbGUI_set_gui_size.gml</script>
+            <script>scripts\scr_cbGUI_mouse.gml</script>
+            <script>scripts\scr_cbGUI_track_depth_step.gml</script>
+            <script>scripts\scr_cbGUI_set_active.gml</script>
+            <script>scripts\scr_cbGUI_mark_as_changed.gml</script>
+          </scripts>
+        </scripts>
+        <scripts name="textbox">
+          <scripts name="private">
+            <script>scripts\_scr_textbox_invalidatesurface.gml</script>
+            <script>scripts\_scr_textbox_gotostart.gml</script>
+            <script>scripts\_scr_textbox_gotoend.gml</script>
+            <script>scripts\_scr_textbox_scrolltxt.gml</script>
+            <script>scripts\_scr_textbox_setblink.gml</script>
+            <script>scripts\_scr_textbox_inserttext.gml</script>
+            <script>scripts\_scr_textbox_setvalue.gml</script>
+            <script>scripts\_scr_textbox_getcursorpos.gml</script>
+            <script>scripts\_scr_textbox_textwidth.gml</script>
+            <script>scripts\_scr_textbox_setcursorpos.gml</script>
+            <script>scripts\_scr_check_valid_char.gml</script>
+            <script>scripts\_scr_textbox_remove.gml</script>
+            <script>scripts\_scr_textbox_unselect.gml</script>
+            <script>scripts\_scr_textbox_calcsizes.gml</script>
+            <script>scripts\_scr_textbox_getselectedtext.gml</script>
+            <script>scripts\_scr_textbox_step_mouse.gml</script>
+            <script>scripts\_scr_textbox_step_ctrl.gml</script>
+          </scripts>
+          <scripts name="public">
+            <script>scripts\scr_textbox_clear.gml</script>
+            <script>scripts\scr_textbox_set_value.gml</script>
+            <script>scripts\scr_textbox_get_value.gml</script>
+            <script>scripts\scr_textbox_set_sprite.gml</script>
+            <script>scripts\scr_textbox_set_padding.gml</script>
+            <script>scripts\scr_textbox_set_indent.gml</script>
+            <script>scripts\scr_textbox_set_font.gml</script>
+            <script>scripts\scr_textbox_set_text_shadow.gml</script>
+            <script>scripts\scr_textbox_set_color.gml</script>
+            <script>scripts\scr_textbox_enable_char_validation.gml</script>
+            <script>scripts\scr_textbox_set_allowed_chars.gml</script>
+            <script>scripts\scr_textbox_get_allowed_chars.gml</script>
+            <script>scripts\scr_textbox_set_target.gml</script>
+            <script>scripts\scr_textbox_unset_target.gml</script>
+            <script>scripts\scr_textbox_get_target.gml</script>
+            <script>scripts\scr_textbox_get_target_variable_name.gml</script>
+            <script>scripts\scr_textbox_set_selection.gml</script>
+            <script>scripts\scr_textbox_get_selection_start.gml</script>
+            <script>scripts\scr_textbox_get_selection_end.gml</script>
+            <script>scripts\scr_textbox_get_selected_text.gml</script>
+            <script>scripts\scr_textbox_delete_selected_text.gml</script>
+            <script>scripts\scr_textbox_insert_text.gml</script>
+            <script>scripts\scr_textbox_select_all.gml</script>
+            <script>scripts\scr_textbox_unselect.gml</script>
+            <script>scripts\scr_textbox_get_text_length.gml</script>
+            <script>scripts\scr_textbox_set_cursor_position.gml</script>
+            <script>scripts\scr_textbox_cursor_go_to_start.gml</script>
+            <script>scripts\scr_textbox_cursor_go_to_end.gml</script>
+            <script>scripts\scr_textbox_get_cursor_position.gml</script>
+            <script>scripts\scr_textbox_is_selected.gml</script>
+            <script>scripts\scr_textbox_is_selection_started.gml</script>
+            <script>scripts\scr_textbox_is_empty.gml</script>
+            <script>scripts\scr_textbox_set_on_change_cb.gml</script>
+            <script>scripts\scr_textbox_unset_on_change_cb.gml</script>
+            <script>scripts\scr_textbox_set_on_submit_cb.gml</script>
+            <script>scripts\scr_textbox_unset_on_submit_cb.gml</script>
+            <script>scripts\scr_textbox_onchangetest.gml</script>
+            <script>scripts\scr_textbox_onsubmittest.gml</script>
+            <script>scripts\scr_textbox_set_sizes.gml</script>
+          </scripts>
+        </scripts>
+        <scripts name="slider">
+          <scripts name="private">
+            <script>scripts\_scr_slider_setcursorpos.gml</script>
+            <script>scripts\_scr_slider_setvalue.gml</script>
+            <script>scripts\_scr_slider_setrange.gml</script>
+            <script>scripts\_scr_slider_setperc.gml</script>
+            <script>scripts\_scr_slider_getcursorpos.gml</script>
+            <script>scripts\_scr_slider_calcsizes.gml</script>
+            <script>scripts\_scr_slider_calcindicator.gml</script>
+            <script>scripts\_scr_slider_step_mouse.gml</script>
+          </scripts>
+          <scripts name="public">
+            <script>scripts\scr_slider_get_target.gml</script>
+            <script>scripts\scr_slider_get_target_variable_name.gml</script>
+            <script>scripts\scr_slider_onchangetest.gml</script>
+            <script>scripts\scr_slider_onreleasetest.gml</script>
+            <script>scripts\scr_slider_set_sprite.gml</script>
+            <script>scripts\scr_slider_set_sizes.gml</script>
+            <script>scripts\scr_slider_set_padding.gml</script>
+            <script>scripts\scr_slider_set_value.gml</script>
+            <script>scripts\scr_slider_get_value.gml</script>
+            <script>scripts\scr_slider_get_percentage.gml</script>
+            <script>scripts\scr_slider_set_percentage.gml</script>
+            <script>scripts\scr_slider_set_step.gml</script>
+            <script>scripts\scr_slider_get_step.gml</script>
+            <script>scripts\scr_slider_set_range.gml</script>
+            <script>scripts\scr_slider_get_min_limit.gml</script>
+            <script>scripts\scr_slider_get_max_limit.gml</script>
+            <script>scripts\scr_slider_set_target.gml</script>
+            <script>scripts\scr_slider_set_on_change_cb.gml</script>
+            <script>scripts\scr_slider_unset_on_change_cb.gml</script>
+            <script>scripts\scr_slider_set_on_release_cb.gml</script>
+            <script>scripts\scr_slider_unset_on_release_cb.gml</script>
+            <script>scripts\scr_slider_set_color.gml</script>
+            <script>scripts\scr_slider_unset_target.gml</script>
+            <script>scripts\scr_slider_show_button.gml</script>
+          </scripts>
+        </scripts>
+        <scripts name="checkbox">
+          <scripts name="private">
+            <script>scripts\_scr_checkbox_togglevalue.gml</script>
+            <script>scripts\_scr_checkbox_setvalue.gml</script>
+            <script>scripts\_scr_checkbox_calcsizes.gml</script>
+          </scripts>
+          <scripts name="public">
+            <script>scripts\scr_checkbox_onchangetest.gml</script>
+            <script>scripts\scr_checkbox_set_sprite.gml</script>
+            <script>scripts\scr_checkbox_set_value.gml</script>
+            <script>scripts\scr_checkbox_get_value.gml</script>
+            <script>scripts\scr_checkbox_toggle_value.gml</script>
+            <script>scripts\scr_checkbox_set_target.gml</script>
+            <script>scripts\scr_checkbox_set_on_change_cb.gml</script>
+            <script>scripts\scr_checkbox_unset_on_change_cb.gml</script>
+            <script>scripts\scr_checkbox_get_target.gml</script>
+            <script>scripts\scr_checkbox_get_target_variable_name.gml</script>
+            <script>scripts\scr_checkbox_unset_target.gml</script>
+            <script>scripts\scr_checkbox_set_indent.gml</script>
+            <script>scripts\scr_checkbox_set_padding.gml</script>
+            <script>scripts\scr_checkbox_get_label.gml</script>
+            <script>scripts\scr_checkbox_set_label.gml</script>
+            <script>scripts\scr_checkbox_set_color.gml</script>
+            <script>scripts\scr_checkbox_set_font.gml</script>
+          </scripts>
+        </scripts>
+        <scripts name="radio">
+          <scripts name="private">
+            <script>scripts\_scr_radio_togglevalue.gml</script>
+            <script>scripts\_scr_radio_setvalue.gml</script>
+            <script>scripts\_scr_radio_turnalloff.gml</script>
+            <script>scripts\_scr_radio_calcsizes.gml</script>
+          </scripts>
+          <scripts name="public">
+            <script>scripts\scr_radio_set_padding.gml</script>
+            <script>scripts\scr_radio_set_font.gml</script>
+            <script>scripts\scr_radio_set_color.gml</script>
+            <script>scripts\scr_radio_set_label.gml</script>
+            <script>scripts\scr_radio_get_label.gml</script>
+            <script>scripts\scr_radio_group_unselect_all.gml</script>
+            <script>scripts\scr_radio_get_instance_value.gml</script>
+            <script>scripts\scr_radio_set_instance_value.gml</script>
+            <script>scripts\scr_radio_set_sprite.gml</script>
+            <script>scripts\scr_radio_set_group.gml</script>
+            <script>scripts\scr_radio_get_group.gml</script>
+            <script>scripts\scr_radio_set_name.gml</script>
+            <script>scripts\scr_radio_get_name.gml</script>
+            <script>scripts\scr_radio_get_value.gml</script>
+            <script>scripts\scr_radio_set_value.gml</script>
+            <script>scripts\scr_radio_set_target.gml</script>
+            <script>scripts\scr_radio_get_target.gml</script>
+            <script>scripts\scr_radio_get_target_variable_name.gml</script>
+            <script>scripts\scr_radio_set_on_change_cb.gml</script>
+            <script>scripts\scr_radio_unset_on_change_cb.gml</script>
+            <script>scripts\scr_radio_unset_target.gml</script>
+            <script>scripts\scr_radio_onchangetest.gml</script>
+          </scripts>
+        </scripts>
+        <scripts name="button">
+          <scripts name="private">
+            <script>scripts\_scr_button_setlabel.gml</script>
+            <script>scripts\_scr_button_removelabel.gml</script>
+            <script>scripts\_scr_button_getvisiblelabel.gml</script>
+            <script>scripts\_scr_button_calcsizes.gml</script>
+            <script>scripts\_scr_ibutton_calcsizes.gml</script>
+            <script>scripts\_scr_button_step_mouse.gml</script>
+          </scripts>
+          <scripts name="public">
+            <script>scripts\scr_button_onmouseovertest.gml</script>
+            <script>scripts\scr_button_onmouseouttest.gml</script>
+            <script>scripts\scr_button_onmousedowntest.gml</script>
+            <script>scripts\scr_button_onmouseuptest.gml</script>
+            <script>scripts\scr_button_set_sizes.gml</script>
+            <script>scripts\scr_button_set_padding.gml</script>
+            <script>scripts\scr_button_set_sprite.gml</script>
+            <script>scripts\scr_button_set_font.gml</script>
+            <script>scripts\scr_button_set_font_align.gml</script>
+            <script>scripts\scr_button_set_label.gml</script>
+            <script>scripts\scr_button_set_color.gml</script>
+            <script>scripts\scr_button_enable_label.gml</script>
+            <script>scripts\scr_button_set_on_mouseover_cb.gml</script>
+            <script>scripts\scr_button_unset_on_mouseover_cb.gml</script>
+            <script>scripts\scr_button_set_on_mouseout_cb.gml</script>
+            <script>scripts\scr_button_unset_on_mouseout_cb.gml</script>
+            <script>scripts\scr_button_set_on_mousedown_cb.gml</script>
+            <script>scripts\scr_button_unset_on_mousedown_cb.gml</script>
+            <script>scripts\scr_button_set_on_mouseup_cb.gml</script>
+            <script>scripts\scr_button_unset_on_mouseup_cb.gml</script>
+          </scripts>
+        </scripts>
+        <scripts name="dropdown">
+          <scripts name="private">
+            <script>scripts\_scr_dropdown_setvaluebyitemno.gml</script>
+            <script>scripts\_scr_dropdown_setkeys.gml</script>
+            <script>scripts\_scr_dropdown_updatekeys.gml</script>
+            <script>scripts\_scr_dropdown_addkeys.gml</script>
+            <script>scripts\_scr_dropdown_deletekeys.gml</script>
+            <script>scripts\_scr_dropdown_emptykeys.gml</script>
+            <script>scripts\_scr_dropdown_setpopup.gml</script>
+            <script>scripts\_scr_dropdown_setscrollbar.gml</script>
+            <script>scripts\_scr_dropdown_onchange.gml</script>
+            <script>scripts\_scr_dropdown_getptx.gml</script>
+            <script>scripts\_scr_dropdown_calcsizes.gml</script>
+            <script>scripts\_scr_dropdown_openpopup.gml</script>
+            <script>scripts\_scr_dropdown_setvalue.gml</script>
+            <script>scripts\_scr_dropdown_step_mouse.gml</script>
+          </scripts>
+          <scripts name="public">
+            <script>scripts\scr_dropdown_set_value.gml</script>
+            <script>scripts\scr_dropdown_set_value_by_line_no.gml</script>
+            <script>scripts\scr_dropdown_get_value.gml</script>
+            <script>scripts\scr_dropdown_get_num_of_lines.gml</script>
+            <script>scripts\scr_dropdown_set_list.gml</script>
+            <script>scripts\scr_dropdown_refresh_list.gml</script>
+            <script>scripts\scr_dropdown_add_to_list.gml</script>
+            <script>scripts\scr_dropdown_delete_from_list.gml</script>
+            <script>scripts\scr_dropdown_empty_list.gml</script>
+            <script>scripts\scr_dropdown_is_empty.gml</script>
+            <script>scripts\scr_dropdown_is_selected.gml</script>
+            <script>scripts\scr_dropdown_has_scrollbar.gml</script>
+            <script>scripts\scr_dropdown_unselect.gml</script>
+            <script>scripts\scr_dropdown_set_target.gml</script>
+            <script>scripts\scr_dropdown_set_scrollbar_width.gml</script>
+            <script>scripts\scr_dropdown_set_sizes.gml</script>
+            <script>scripts\scr_dropdown_set_padding.gml</script>
+            <script>scripts\scr_dropdown_set_popup_padding.gml</script>
+            <script>scripts\scr_dropdown_set_scrollbar_padding.gml</script>
+            <script>scripts\scr_dropdown_set_sprite.gml</script>
+            <script>scripts\scr_dropdown_set_color.gml</script>
+            <script>scripts\scr_dropdown_set_popup_offset.gml</script>
+            <script>scripts\scr_dropdown_set_popup_lineheight.gml</script>
+            <script>scripts\scr_dropdown_set_font.gml</script>
+            <script>scripts\scr_dropdown_set_font_align.gml</script>
+            <script>scripts\scr_dropdown_set_popup_max_lines.gml</script>
+            <script>scripts\scr_dropdown_set_on_change_cb.gml</script>
+            <script>scripts\scr_dropdown_unset_on_change_cb.gml</script>
+            <script>scripts\scr_dropdown_get_target.gml</script>
+            <script>scripts\scr_dropdown_get_target_variable_name.gml</script>
+            <script>scripts\scr_dropbox_unset_target.gml</script>
+            <script>scripts\scr_dropdown_onchangetest.gml</script>
+          </scripts>
+        </scripts>
+        <scripts name="colorpicker">
+          <scripts name="private">
+            <script>scripts\_scr_colorpicker_setvalue.gml</script>
+            <script>scripts\_scr_colorpicker_invalidatesurface.gml</script>
+            <script>scripts\_scr_colorpicker_openpopup.gml</script>
+            <script>scripts\_scr_colorpicker_step_mouse.gml</script>
+          </scripts>
+          <scripts name="public">
+            <script>scripts\scr_colorpicker_set_sizes.gml</script>
+            <script>scripts\scr_colorpicker_set_value.gml</script>
+            <script>scripts\scr_colorpicker_set_value_rgb.gml</script>
+            <script>scripts\scr_colorpicker_set_value_hsv.gml</script>
+            <script>scripts\scr_colorpicker_set_value_hex.gml</script>
+            <script>scripts\scr_colorpicker_set_ui_color.gml</script>
+            <script>scripts\scr_colorpicker_get_value.gml</script>
+            <script>scripts\scr_colorpicker_show_info.gml</script>
+            <script>scripts\scr_colorpicker_auto_copy_to_clipboard.gml</script>
+            <script>scripts\scr_colorpicker_set_font.gml</script>
+            <script>scripts\scr_colorpicker_get_hex_value.gml</script>
+            <script>scripts\scr_colorpicker_set_target.gml</script>
+            <script>scripts\scr_colorpicker_set_on_change_cb.gml</script>
+            <script>scripts\scr_colorpicker_unset_on_change_cb.gml</script>
+            <script>scripts\scr_colorpicker_set_on_release_cb.gml</script>
+            <script>scripts\scr_colorpicker_unset_on_release_cb.gml</script>
+            <script>scripts\scr_colorpicker_get_target.gml</script>
+            <script>scripts\scr_colorpicker_get_target_variable_name.gml</script>
+            <script>scripts\scr_colorpicker_unset_target.gml</script>
+          </scripts>
+        </scripts>
+        <scripts name="utils">
+          <scripts name="private">
+            <script>scripts\_scr_getnearestpower.gml</script>
+            <script>scripts\_scr_rotate_point.gml</script>
+            <script>scripts\_scr_text_sanitize.gml</script>
+            <script>scripts\_scr_text_shorten.gml</script>
+            <script>scripts\_scr_text_unsanitize.gml</script>
+            <script>scripts\variable_instance_exists.gml</script>
+            <script>scripts\variable_instance_get.gml</script>
+            <script>scripts\variable_instance_set.gml</script>
+          </scripts>
+          <scripts name="public">
+            <script>scripts\scr_draw_9slices_ext.gml</script>
+            <script>scripts\scr_dance.gml</script>
+            <script>scripts\scr_dsmap_get_keys.gml</script>
+            <script>scripts\scr_dsmap_get_values.gml</script>
+            <script>scripts\array_concat_1d.gml</script>
+            <script>scripts\array_add_1d.gml</script>
+            <script>scripts\implode.gml</script>
+            <script>scripts\dec_to_hex.gml</script>
+            <script>scripts\color_to_hex.gml</script>
+            <script>scripts\hex_to_dec.gml</script>
+            <script>scripts\hex_to_color.gml</script>
+          </scripts>
+        </scripts>
+      </scripts>
+      <scripts name="cbDataGUI">
+        <scripts name="controller">
+          <scripts name="private">
+            <script>scripts\_scr_cbDataGUI_init.gml</script>
+            <script>scripts\_scr_cbDataGUI_getvalue.gml</script>
+            <script>scripts\_scr_cbDataGUI_setvalue.gml</script>
+            <script>scripts\_scr_cbDataGUI_getboxheight.gml</script>
+            <script>scripts\_scr_cbDataGUI_togglegui.gml</script>
+            <script>scripts\_scr_cbDataGUI_handlepresetobj.gml</script>
+          </scripts>
+        </scripts>
+        <scripts name="component">
+          <scripts name="private">
+            <script>scripts\_scr_cbDataGUI_processrows.gml</script>
+            <script>scripts\_scr_cbDataGUI_makevisible.gml</script>
+            <script>scripts\_scr_cbDataGUI_add.gml</script>
+            <script>scripts\_scr_cbDataGUI_calcmaxtextwidth.gml</script>
+            <script>scripts\_scr_slider_on_change.gml</script>
+            <script>scripts\_scr_textbox_update_slider.gml</script>
+          </scripts>
+        </scripts>
+        <scripts name="preset">
+          <scripts name="private">
+            <script>scripts\_scr_cbDataGUI_newpreset.gml</script>
+            <script>scripts\_scr_cbDataGUI_savepreset.gml</script>
+            <script>scripts\_scr_cbDataGUI_loadpreset.gml</script>
+            <script>scripts\_scr_cbDataGUI_delpreset.gml</script>
+            <script>scripts\_scr_cbDataGUI_getpresetcode.gml</script>
+            <script>scripts\_scr_cbDataGUI_haspreset.gml</script>
+            <script>scripts\_scr_cbDataGUI_preset_get_values_as_map.gml</script>
+            <script>scripts\_scr_cbDataGUI_preset_set_values_from_map.gml</script>
+            <script>scripts\_scr_cbDataGUI_preset_dropdown_change.gml</script>
+            <script>scripts\_scr_cbDataGUI_loadpresetfile.gml</script>
+            <script>scripts\_scr_cbDataGUI_savepresetfile.gml</script>
+            <script>scripts\_scr_cbDataGUI_updatedropdown.gml</script>
+            <script>scripts\_scr_cbDataGUI_import_json_string.gml</script>
+          </scripts>
+        </scripts>
+        <scripts name="tooltip">
+          <scripts name="private">
+            <script>scripts\_scr_cbDataGUI_tooltip_set.gml</script>
+            <script>scripts\_scr_cbDataGUI_tooltip_unset.gml</script>
+          </scripts>
+        </scripts>
+        <script>scripts\scr_otest_change_color.gml</script>
+        <script>scripts\scr_cbDataGUI_set_gui_size.gml</script>
+        <script>scripts\scr_cbDataGUI_create.gml</script>
+        <script>scripts\scr_cbDataGUI_add.gml</script>
+        <script>scripts\scr_cbDataGUI_add_folder.gml</script>
+        <script>scripts\scr_cbDataGUI_set_gui_width.gml</script>
+        <script>scripts\scr_cbDataGUI_set_step.gml</script>
+        <script>scripts\scr_cbDataGUI_set_range.gml</script>
+        <script>scripts\scr_cbDataGUI_open_folder.gml</script>
+        <script>scripts\scr_cbDataGUI_get_value.gml</script>
+        <script>scripts\scr_cbDataGUI_set_value.gml</script>
+        <script>scripts\scr_cbDataGUI_has_row.gml</script>
+        <script>scripts\scr_cbDataGUI_toggle_gui.gml</script>
+        <script>scripts\scr_cbDataGUI_set_tooltip.gml</script>
+        <script>scripts\scr_cbDataGUI_unset_tooltip.gml</script>
+        <script>scripts\scr_cbDataGUI_use_presets.gml</script>
+        <script>scripts\scr_cbDataGUI_auto_save_presets.gml</script>
+        <script>scripts\scr_cbDataGUI_set_presets_folder.gml</script>
+        <script>scripts\scr_cbDataGUI_add_preset.gml</script>
+        <script>scripts\scr_cbDataGUI_save_preset.gml</script>
+        <script>scripts\scr_cbDataGUI_load_preset.gml</script>
+        <script>scripts\scr_cbDataGUI_delete_preset.gml</script>
+        <script>scripts\scr_cbDataGUI_get_preset_json.gml</script>
+        <script>scripts\scr_cbDataGUI_import_presets_json.gml</script>
+        <script>scripts\scr_cbDataGUI_set_notification.gml</script>
+        <script>scripts\scr_cbDataGUI_set_on_change_cb.gml</script>
+        <script>scripts\scr_cbDataGUI_unset_on_change_cb.gml</script>
+        <script>scripts\scr_cbDataGUI_set_on_release_cb.gml</script>
+        <script>scripts\scr_cbDataGUI_unset_on_release_cb.gml</script>
+        <script>scripts\scr_cbDataGUI_set_as_listener.gml</script>
+        <scripts name="utils">
+          <scripts name="public">
+            <script>scripts\json_minify.gml</script>
+          </scripts>
+        </scripts>
+      </scripts>
+    </scripts>
+    <scripts name="cbDataGUI">
+      <scripts name="fizzytext">
+        <script>scripts\scr_ft_create_cbdatagui.gml</script>
+      </scripts>
+    </scripts>
+    <script>scripts\scr_generate_random_seed.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\sha_noise_perlin_2d.shader</shader>
@@ -90,17 +585,23 @@
     <shader type="GLSLES">shaders\sha_noise_value_1d.shader</shader>
     <shader type="GLSLES">shaders\sha_noise_value_2d.shader</shader>
     <shader type="GLSLES">shaders\sha_noise_value_3d.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_value_demo.shader</shader>
-    <shader type="GLSLES">shaders\sha_noise_value_2d3d_demo.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_value_fractal.shader</shader>
     <shader type="GLSLES">shaders\sha_noise_flow_2d_fractal.shader</shader>
     <shader type="GLSLES">shaders\sha_noise_flow_2d_fire.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_perlin_3d_demo.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_simplex_3d_demo.shader</shader>
+    <shader type="GLSLES">shaders\sha_noise_value_3d_demo.shader</shader>
   </shaders>
   <fonts name="fonts">
+    <font>fonts\cbGUIFont</font>
+    <font>fonts\cbDataGUIFont</font>
+    <font>fonts\cbDataGUIFontBold</font>
     <font>fonts\font0</font>
   </fonts>
   <objects name="objects">
     <object>objects\oSPT</object>
     <object>objects\oSeedSalt</object>
+    <object>objects\oRoomSwitcher</object>
     <objects name="Noise">
       <objects name="CPU">
         <object>objects\oNoise_pn</object>
@@ -109,41 +610,42 @@
         <object>objects\oNoise_vn</object>
       </objects>
       <objects name="GPU">
-        <object>objects\oShaNoise_flow_2d_fractal</object>
+        <object>objects\oGPUNoise</object>
+        <object>objects\oShaNoise_value_fractal</object>
         <object>objects\oShaNoise_flow_2d_fire</object>
-        <object>objects\oShaNoise_sn2d</object>
-        <object>objects\oShaNoise_sn3d</object>
-        <object>objects\oShaNoise_sn4d</object>
-        <object>objects\oShaNoise_pn2d</object>
-        <object>objects\oShaNoise_pn3d</object>
-        <object>objects\oShaNoise_pn4d</object>
-        <object>objects\oShaNoise_value_demo</object>
-        <object>objects\oShaNoise_value_1d</object>
-        <object>objects\oShaNoise_value_2d</object>
-        <object>objects\oShaNoise_value_3d</object>
-        <object>objects\oShaNoise_value_2d3d_demo</object>
+        <object>objects\oShaNoise_flow_2d_fractal</object>
       </objects>
     </objects>
-    <object>objects\oRoomSwitcher</object>
+    <objects name="cbGUI">
+      <object>objects\obj_cbGUI_parent</object>
+      <object>objects\obj_cbGUI_textbox</object>
+      <object>objects\obj_cbGUI_slider</object>
+      <object>objects\obj_cbGUI_checkbox</object>
+      <object>objects\obj_cbGUI_radio</object>
+      <object>objects\obj_cbGUI_button</object>
+      <object>objects\obj_cbGUI_imagebutton</object>
+      <object>objects\obj_cbGUI_dropdown</object>
+      <object>objects\obj_cbGUI_colorpicker</object>
+    </objects>
+    <objects name="cbDataGUI">
+      <object>objects\obj_cbDataGUI_controller</object>
+      <object>objects\obj_cbDataGUI_component</object>
+      <object>objects\obj_cbDataGUI_folder</object>
+      <object>objects\obj_cbDataGUI_preset</object>
+      <object>objects\obj_cbDataGUI_tooltip</object>
+      <object>objects\obj_cbDataGUI_notification</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\index</room>
-    <room>rooms\GPU_sha_perlin_2d</room>
-    <room>rooms\GPU_sha_perlin_4d</room>
-    <room>rooms\GPU_sha_perlin_3d</room>
-    <room>rooms\GPU_sha_simplex_2d</room>
-    <room>rooms\GPU_sha_simplex_3d</room>
-    <room>rooms\GPU_sha_simplex_4d</room>
-    <room>rooms\GPU_sha_value_1d</room>
-    <room>rooms\GPU_sha_value_2d</room>
-    <room>rooms\GPU_sha_value_3d</room>
-    <room>rooms\GPU_sha_value_2d3d_demo</room>
-    <room>rooms\GPU_sha_value_demo</room>
+    <room>rooms\index_gpu</room>
+    <room>rooms\GPU_Noise</room>
+    <room>rooms\GPU_sha_value_fractal</room>
     <room>rooms\GPU_sha_flow_2d_fractal</room>
     <room>rooms\GPU_sha_flow_2d_fire</room>
-    <room>rooms\CPU_improved_3d</room>
     <room>rooms\CPU_perlin_3d</room>
     <room>rooms\CPU_simplex_3d</room>
+    <room>rooms\CPU_improved_3d</room>
     <room>rooms\CPU_value_3d</room>
     <room>rooms\room_benchmark</room>
   </rooms>

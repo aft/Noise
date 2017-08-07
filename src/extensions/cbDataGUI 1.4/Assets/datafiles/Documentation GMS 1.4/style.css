@@ -1,0 +1,174 @@
+* {
+  box-sizing: border-box;
+  margin: 0 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: Calibri, sans-serif;
+  color: #202020;
+}
+
+p {
+	padding-bottom: 10px;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: #0080ff;
+}
+
+.center-vert {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#header {
+  position: relative;
+  padding-left: 16px;
+  width: 100%;
+  height: 64px;
+  background-color: black;
+  color: white;
+  font-size: 1.75em;
+  font-weight: bold;
+}
+
+#wrapper {
+  width: 100%;
+  height: Calc(100% - 64px - 32px); /* Subtract header and footer height here. */
+  overflow: hidden;
+}
+
+#wrapper:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+#menu {
+  float: left;
+  width: 25%;
+  height: 100%;
+  overflow: auto;
+  padding: 16px;
+  background-color: #f1f1f1;
+  border-right: 1px solid silver;
+}
+
+#menu h3 {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+ul {
+  list-style: none inside;
+  padding-bottom: 10px;
+}
+
+ul > ul {
+  margin-left: 16px;
+}
+
+li:before {
+  font-family: monospace;
+  content: "+";
+  padding-right: 8px;
+}
+
+.folder {
+  padding-left: 0px;
+}
+
+.hidden {
+  display: none;
+}
+
+.folder:before {
+  content: "+";
+}
+
+.folder.expanded:before {
+  content: "-";
+}
+
+.folder:hover {
+  cursor: pointer;
+}
+
+#pages {
+  float: right;
+  width: 75%;
+  height: 100%;
+  overflow: auto;
+  padding: 16px;
+  background-color: white;
+}
+
+#pages > .page:target ~ .page:last-child, #pages > .page {
+  display: none;
+}
+
+#pages > :last-child, #pages > .page:target {
+  display: block;
+}
+
+.page h1:after {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin: 8px 0;
+  background-color: silver;
+}
+
+.page h2 {
+  margin: 0.5em 0;
+}
+
+.page table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.page tr:nth-child(odd) {
+  background-color: #eeeeee;
+}
+
+.page td {
+  padding: 4px;
+}
+
+.page td:nth-child(1) {
+  width: 15%;
+}
+
+.page td:nth-child(2) {
+  width: 15%;
+}
+
+pre {
+  margin: 16px 0;
+}
+
+pre, .code {
+  font-family: monospace;
+  background-color: #eeeeee;
+  padding: 4px;
+}
+
+#footer {
+  position: relative;
+  padding-left: 16px;
+  float: none;
+  width: 100%;
+  height: 32px;
+  background-color: silver;
+  border-top: 1px solid gray;
+}
