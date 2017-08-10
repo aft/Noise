@@ -8,6 +8,7 @@
     <extension index="0">extensions\Simple Performance Test</extension>
     <extension index="1">extensions\NoisePack CPU</extension>
     <extension index="2">extensions\cbDataGUI 1.4</extension>
+    <extension index="3">extensions\PBuffer - Pixel Buffer</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -568,12 +569,27 @@
         </scripts>
       </scripts>
     </scripts>
-    <scripts name="cbDataGUI">
-      <scripts name="fizzytext">
-        <script>scripts\scr_ft_create_cbdatagui.gml</script>
+    <script>scripts\scr_generate_random_seed.gml</script>
+    <scripts name="GPUToolkit">
+      <scripts name="PBuffer">
+        <script>scripts\pbuffer_create_from_surface.gml</script>
+        <script>scripts\pbuffer_copy_to_surface.gml</script>
+        <script>scripts\pbuffer_destroy.gml</script>
+        <script>scripts\pbuffer_is_equal.gml</script>
+        <script>scripts\pbuffer_exists.gml</script>
+        <script>scripts\pbuffer_get_pixel.gml</script>
+        <script>scripts\pbuffer_get_width.gml</script>
+        <script>scripts\pbuffer_get_height.gml</script>
+        <script>scripts\pbuffer_get_buffer.gml</script>
+        <script>scripts\pbuffer_pixel_get_color.gml</script>
+        <script>scripts\pbuffer_pixel_get_r.gml</script>
+        <script>scripts\pbuffer_pixel_get_g.gml</script>
+        <script>scripts\pbuffer_pixel_get_b.gml</script>
+        <script>scripts\pbuffer_pixel_get_a.gml</script>
+        <script>scripts\buffer_exists_hack.gml</script>
+        <script>scripts\README.gml</script>
       </scripts>
     </scripts>
-    <script>scripts\scr_generate_random_seed.gml</script>
   </scripts>
   <shaders name="shaders">
     <shaders name="perlin noise glsles">
