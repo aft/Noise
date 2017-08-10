@@ -12,11 +12,6 @@ void main()
 }
 
 //######################_==_YOYO_SHADER_MARKER_==_######################@~
-
-
-
-
-
 // Adapted for GMS by Cem Baspinar. Shadertoy page for it linked below.
 //
 // A Note from @aft: 
@@ -24,12 +19,6 @@ void main()
 // Stefan Gustavson's opinion on adding a seed support. He himself 
 // says that it has a performance cost and this shall be done by 
 // offsetting coords. This code is a coordinate offset hack.
-//
-// Use seed salt to prevent artifacts. 
-// 
-// Remember that it's just a hack. A better version, which has a 
-// built in seed support may be created. I just couldn't manage
-// to do it no matter what i tried.
 //
 // Reuse permitted under the MIT license.
 //
@@ -71,13 +60,13 @@ vec3 permute(vec3 x) {
 
 float snoise(vec2 v) {
 
-  v += sin(u_seed * 1.78291351) * 1e6; // seed addition by shifting pos.
-
   const vec4 C = vec4(0.211324865405187,  // (3.0-sqrt(3.0))/6.0
                       0.366025403784439,  // 0.5*(sqrt(3.0)-1.0)
                      -0.577350269189626,  // -1.0 + 2.0 * C.x
                       0.024390243902439); // 1.0 / 41.0
   
+  v += cos(dot(vec4(u_seed * 1.4071341), C)) * 1e3; // seed addition by shifting pos.
+
 // First corner
   vec2 i  = floor(v + dot(v, C.yy) );
   vec2 x0 = v -   i + dot(i, C.xx);

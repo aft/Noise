@@ -39,7 +39,7 @@ uniform float u_scale; // 10.
 // They are tuned to avoid visible periodicity for both positive and
 // negative coordinates within a few orders of magnitude.
 
-float hash(float n) { return fract(sin(n + u_seed * 0.3183099) * 1e4); }
+float hash(float n) { return fract(sin(n + u_seed) * 1e4); } // seed addition
 
 float noise(float x) {
     float i = floor(x);

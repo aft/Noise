@@ -41,7 +41,7 @@ uniform float u_scale; // 20.
 // negative coordinates within a few orders of magnitude.
 
 float hash(vec2 p) {
-    float salt = fract(sin(u_seed * 0.3183099));
+    float salt = fract(cos(u_seed * 0.3183099));
     return fract(1e4 * sin(17.0 * p.x + p.y * 0.1 + salt) * (0.1 + abs(sin(p.y * 13.0 + p.x + salt)))); 
 }
 

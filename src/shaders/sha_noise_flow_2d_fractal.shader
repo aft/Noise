@@ -16,9 +16,6 @@ void main()
 
 //######################_==_YOYO_SHADER_MARKER_==_######################@~
 
-
-
-
 #define OCTAVES 7 // CHANGE THIS AS YOU WISH
 
 varying vec3 v_vPosition;

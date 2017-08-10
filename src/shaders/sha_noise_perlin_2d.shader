@@ -12,8 +12,6 @@ void main()
 }
 
 //######################_==_YOYO_SHADER_MARKER_==_######################@~
-
-
 // Adapted for GMS by Cem Baspinar. Shadertoy page for it linked below.
 //
 // A Note from @aft: 
@@ -21,12 +19,6 @@ void main()
 // Stefan Gustavson's opinion on adding a seed support. He himself 
 // says that it has a performance cost and this shall be done by 
 // offsetting coords. This code is a coordinate offset hack.
-//
-// Use seed salt to prevent artifacts. 
-// 
-// Remember that it's just a hack. A better version, which has a 
-// built in seed support may be created. I just couldn't manage
-// to do it no matter what i tried.
 //
 // Reuse permitted under the MIT license.
 //

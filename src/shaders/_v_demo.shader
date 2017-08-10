@@ -45,7 +45,7 @@ uniform float u_persistence;
 uniform float u_freq;
 uniform float u_scale; // 1.
 
-float hash(float n) { return fract(sin(n + u_seed * 0.3183099) * 1e4); }
+float hash(float n) { return fract(sin(n + u_seed) * 1e4); }
 
 float noise(vec3 x) {
     // Random rotation idea to reduce artifacts by @dgreensp 

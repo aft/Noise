@@ -23,12 +23,6 @@ void main()
 // says that it has a performance cost and this shall be done by 
 // offsetting coords. This code is a coordinate offset hack.
 //
-// Use seed salt to prevent artifacts. 
-// 
-// Remember that it's just a hack. A better version, which has a 
-// built in seed support may be created. I just couldn't manage
-// to do it no matter what i tried.
-//
 // Reuse permitted under the MIT license.
 //
 // Seed hack added by @aft.
@@ -93,7 +87,7 @@ vec3 fade(vec3 t) {
 // Classic Perlin noise
 float cnoise(vec3 P) {
 
-  P += sin(u_seed * 1.78291351) * 1e6; // seed addition by shifting pos.
+  P += cos(dot(vec2(u_seed, u_seed * 1.4), vec2(0.1666666666666667, 0.3333333333333333))) * 1e3; // seed addition by shifting pos.
 
   vec3 Pi0 = floor(P); // Integer part for indexing
   vec3 Pi1 = Pi0 + vec3(1.0); // Integer part + 1

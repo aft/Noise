@@ -8,8 +8,6 @@ void main()
 }
 
 //######################_==_YOYO_SHADER_MARKER_==_######################@~
-
-
 // https://thebookofshaders.com/13/
 // Author @patriciogv - 2015
 // http://patriciogonzalezvivo.com

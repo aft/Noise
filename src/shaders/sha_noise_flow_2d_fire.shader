@@ -16,9 +16,6 @@ void main()
 
 //######################_==_YOYO_SHADER_MARKER_==_######################@~
 
-
-
-
 #ifdef GL_ES
 precision mediump float;
 #endif
