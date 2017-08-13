@@ -588,6 +588,13 @@
         <script>scripts\buffer_exists_hack.gml</script>
         <script>scripts\README.gml</script>
       </scripts>
+      <scripts name="GPU Noise">
+        <script>scripts\gpu_noise_perlin.gml</script>
+        <script>scripts\gpu_noise_perlin_calculate.gml</script>
+        <script>scripts\gpu_noise_perlin_create.gml</script>
+        <script>scripts\gpu_noise_perlin_create_ext.gml</script>
+        <script>scripts\gpu_noise_perlin_free.gml</script>
+      </scripts>
     </scripts>
     <scripts name="demo">
       <script>scripts\scr_generate_random_seed.gml</script>
@@ -627,6 +634,7 @@
     <font>fonts\font0</font>
   </fonts>
   <objects name="objects">
+    <object>objects\gpunoisetest</object>
     <object>objects\oSPT</object>
     <object>objects\oSeedSalt</object>
     <object>objects\oRoomSwitcher</object>
