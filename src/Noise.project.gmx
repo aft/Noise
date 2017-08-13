@@ -569,7 +569,6 @@
         </scripts>
       </scripts>
     </scripts>
-    <script>scripts\scr_generate_random_seed.gml</script>
     <scripts name="GPUToolkit">
       <scripts name="PBuffer">
         <script>scripts\pbuffer_create_from_surface.gml</script>
@@ -589,6 +588,9 @@
         <script>scripts\buffer_exists_hack.gml</script>
         <script>scripts\README.gml</script>
       </scripts>
+    </scripts>
+    <scripts name="demo">
+      <script>scripts\scr_generate_random_seed.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">

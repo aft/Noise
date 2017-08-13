@@ -43,8 +43,13 @@ uniform float u_frame;
 uniform float u_persistence;
 uniform float u_freq;
 uniform float u_scale; // 1.
+uniform float u_xoffset; // 0.
+uniform float u_yoffset; // 0.
+uniform float u_zoffset; // 0.
+uniform float u_woffset; // 0.
 
-#define u_time float(u_frame)*0.0005
+
+#define u_time float(u_frame) / u_resolution.x * u_scale * 0.5
 
 // Original code starts here
 
@@ -191,6 +196,8 @@ void main() {
 
     vec3 p = vec3(v_vPosition.xyz/u_resolution.x * u_scale);
     vec4 p4 = vec4(p, u_time);
+    vec4 offset = vec4(u_xoffset, u_yoffset, u_zoffset, u_woffset) / u_resolution.x * u_scale;
+    p4 += offset;
     float value = NOISE(OCTAVES, u_persistence, u_freq, p4);
     gl_FragColor = vec4(vec3(value), 1.0);
     

@@ -36,6 +36,9 @@ _pers = 0.65;
 _freq = 16.0;
 _scale = 1.0;
 _time_as_z = true;
+_x_offset = 0;
+_y_offset = 0;
+_z_offset = 0;
 
 
 // Create the GUI using cbDataGUI extension
@@ -79,6 +82,21 @@ scr_cbDataGUI_set_value(oGPUNoise, "time_as_z", _time_as_z);
 
 // generate a random seed button
 scr_cbDataGUI_add(oGPUNoise, "scr_generate_random_seed", cbData_type.function, -1);
+
+// x offset
+scr_cbDataGUI_add(oGPUNoise, "x_offset", cbData_type.number, -1);
+scr_cbDataGUI_set_range(oGPUNoise, "x_offset", -room_width, room_width);
+scr_cbDataGUI_set_value(oGPUNoise, "x_offset", _x_offset);
+
+// y offset
+scr_cbDataGUI_add(oGPUNoise, "y_offset", cbData_type.number, -1);
+scr_cbDataGUI_set_range(oGPUNoise, "y_offset", -room_height, room_height);
+scr_cbDataGUI_set_value(oGPUNoise, "y_offset", _y_offset);
+
+// z offset
+scr_cbDataGUI_add(oGPUNoise, "z_offset", cbData_type.number, -1);
+scr_cbDataGUI_set_range(oGPUNoise, "z_offset", -100, 100);
+scr_cbDataGUI_set_value(oGPUNoise, "z_offset", _z_offset);
 
 </string>
           </argument>
@@ -163,6 +181,12 @@ _freq = scr_cbDataGUI_get_value(oGPUNoise, "frequency");
 _scale = scr_cbDataGUI_get_value(oGPUNoise, "scale");
 // time_as_z
 _time_as_z = scr_cbDataGUI_get_value(oGPUNoise, "time_as_z");
+// x offset
+_x_offset = scr_cbDataGUI_get_value(oGPUNoise, "x_offset");
+// y offset
+_y_offset = scr_cbDataGUI_get_value(oGPUNoise, "y_offset");
+// x offset
+_z_offset = scr_cbDataGUI_get_value(oGPUNoise, "z_offset");
 
 // Increase frame count
 if (_time_as_z) _i++;
@@ -186,7 +210,16 @@ shader_set(_shader);
     
     var scale = shader_get_uniform(_shader, "u_scale");
     shader_set_uniform_f(scale, _scale);
-    
+
+    var xoffset = shader_get_uniform(_shader, "u_xoffset");
+    shader_set_uniform_f(xoffset, _x_offset);
+        
+    var yoffset = shader_get_uniform(_shader, "u_yoffset");
+    shader_set_uniform_f(yoffset, _y_offset);
+        
+    var zoffset = shader_get_uniform(_shader, "u_zoffset");
+    shader_set_uniform_f(zoffset, _z_offset);
+        
     draw_rectangle(0, 0, room_width, room_height, false);
     
 shader_reset();

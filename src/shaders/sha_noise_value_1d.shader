@@ -26,6 +26,8 @@ uniform float u_frame;
 uniform float u_persistence;
 uniform float u_freq;
 uniform float u_scale; // 10.
+uniform float u_xoffset; // 0.
+
 
 // Minor edits & seed support (offsetting) by Cem Baspinar. 
 // https://www.shadertoy.com/view/4djcDG
@@ -69,7 +71,10 @@ float getnoise1d_fbm(int octaves, float u_persistence, float u_freq, float coord
 void main() {
 
     float p = (v_vPosition.x / u_resolution.x) * u_scale;
+    float offset = u_xoffset / u_resolution.x * u_scale;
+    p += offset;
     float value = NOISE(OCTAVES, u_persistence, u_freq, p);
     gl_FragColor = vec4(vec3(value), 1.);
+    
 }
 

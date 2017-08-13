@@ -44,6 +44,9 @@ uniform float u_frame;
 uniform float u_persistence;
 uniform float u_freq;
 uniform float u_scale; // 1.
+uniform float u_xoffset; // 0.
+uniform float u_yoffset; // 0.
+uniform float u_zoffset; // 0.
 
 float hash(float n) { return fract(sin(n + u_seed) * 1e4); }
 
@@ -85,19 +88,21 @@ float getnoise3d_fbm(int octaves, float u_persistence, float u_freq, vec3 coords
 // This function is only for a demo. You may remove this 
 // and ifdef block in the main function.
 vec3 use_time(vec3 p) {
-    p.z = u_frame / u_resolution.x * u_scale * 0.5;
+    p.z = u_frame / u_resolution.x * 0.5;
     return p;
 }
 
 void main() {
 
-    vec3 p3 = vec3(v_vPosition.xyz/u_resolution.x) * u_scale;
+    vec3 p = vec3(v_vPosition.xyz/u_resolution.x) * u_scale;
+    vec3 offset = vec3(u_xoffset, u_yoffset, u_zoffset) / u_resolution.x * u_scale;
         
     #ifdef DEMO_MODE 
-        p3 =  use_time(p3);
+        p =  use_time(p);
     #endif
     
-    float value = NOISE(OCTAVES, u_persistence, u_freq, p3);
+    p += offset;
+    float value = NOISE(OCTAVES, u_persistence, u_freq, p);
     gl_FragColor = vec4(vec3(value), 1.);
     
 }
