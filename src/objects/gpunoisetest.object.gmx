@@ -25,11 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>show_debug_overlay(true);
+            <string>nn = gpu_noise_perlin_create(0, 150, 150);
 
-nn = gpu_noise_perlin_create(0, 150, 150);
-show_debug_message("typeof nn " + string( typeof(nn) ));
-val = gpu_noise_perlin(nn, 0, 0, 0);
 
 </string>
           </argument>
@@ -64,14 +61,14 @@ for (var i=0; i&lt;150; i++) {
 
 
 /*
-// single value, fıxed z = 3000fps
+// single value, fixed z =  0.0035ms per lookup
 val = gpu_noise_perlin(nn, irandom_range(0, 150), irandom_range(0, 150), 0);
 draw_set_color(make_color_hsv(0, 0, val*255));
 draw_rectangle(x, y, x+150, y+150, false);
 */
 
 /*
-// single value, varıable z = 600fps
+// single value, varıable z = 1.287ms per lookup
 val = gpu_noise_perlin(nn, irandom_range(0, 150), irandom_range(0, 150), irandom_range(0, 150));
 draw_set_color(make_color_hsv(0, 0, val*255));
 draw_rectangle(x, y, x+150, y+150, false);

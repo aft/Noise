@@ -589,10 +589,14 @@
         <script>scripts\README.gml</script>
       </scripts>
       <scripts name="GPU Noise">
-        <script>scripts\gpu_noise_perlin.gml</script>
-        <script>scripts\gpu_noise_perlin_calculate.gml</script>
         <script>scripts\gpu_noise_perlin_create.gml</script>
         <script>scripts\gpu_noise_perlin_create_ext.gml</script>
+        <script>scripts\gpu_noise_perlin_1d.gml</script>
+        <script>scripts\gpu_noise_perlin_2d.gml</script>
+        <script>scripts\gpu_noise_perlin_3d.gml</script>
+        <script>scripts\gpu_noise_perlin_offset.gml</script>
+        <script>scripts\gpu_noise_perlin_get_surface.gml</script>
+        <script>scripts\gpu_noise_perlin_calculate.gml</script>
         <script>scripts\gpu_noise_perlin_free.gml</script>
       </scripts>
     </scripts>
@@ -636,6 +640,7 @@
   <objects name="objects">
     <object>objects\gpunoisetest</object>
     <object>objects\oSPT</object>
+    <object>objects\oSPT_gpunoise</object>
     <object>objects\oSeedSalt</object>
     <object>objects\oRoomSwitcher</object>
     <objects name="Noise">
@@ -684,6 +689,7 @@
     <room>rooms\CPU_improved_3d</room>
     <room>rooms\CPU_value_3d</room>
     <room>rooms\room_benchmark</room>
+    <room>rooms\room_gpu_performance</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

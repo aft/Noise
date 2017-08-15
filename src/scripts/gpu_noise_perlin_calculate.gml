@@ -1,6 +1,5 @@
 /// gpu_noise_perlin_calculate(noise_object);
 
-
 var o = argument0;
 var _seed        = o[@0];
 var _width       = o[@1];
@@ -12,9 +11,19 @@ var _x_offset    = o[@6];
 var _y_offset    = o[@7];
 var _z_offset    = o[@8];
 var _shader      = o[@9];
+var _surface     = o[@11];
+
+// if there is already a surface, delete it.
+if (!is_undefined(o[@11])) {
+    // if is a valid surface
+    if (surface_exists(o[@11])) {
+        surface_free(o[@11]);
+        o[@11] = undefined;
+    }
+}
 
 // create surface for the noise
-var _surface = surface_create(_width, _height);
+_surface = surface_create(_width, _height);
 
 // draw the noise to the surface
 surface_set_target(_surface);
@@ -44,12 +53,10 @@ if (!is_undefined(o[@10])) {
 // create nbuffer
 var _nbuffer = buffer_create(((_width*_height)*4), buffer_fixed, 4);
 buffer_get_surface(_nbuffer, _surface, 0, 0, 0);
-// assign nbuffer
-o[@10] = _nbuffer;
 
-// free surface and the buffer
-surface_free(_surface);
-//buffer_delete(_nbuffer);
+// assign surface & nbuffer
+o[@10] = _nbuffer;
+o[@11] = _surface;
 
 return o;
 
