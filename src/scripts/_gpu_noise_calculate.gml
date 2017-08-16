@@ -1,4 +1,4 @@
-/// gpu_noise_perlin_calculate(noise_object);
+/// gpu_noise_calculate(noise_object);
 
 var o = argument0;
 var _seed        = o[@0];

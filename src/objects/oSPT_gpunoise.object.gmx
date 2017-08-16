@@ -212,7 +212,7 @@ test_running_message = string(test_project_title) + " is running. ##Program may 
             <kind>1</kind>
             <string>///Pre-test1 setup
 //Any pre-test setup code should go here, before the timer starts
-nn = gpu_noise_perlin_create(0, 150, 150);
+nn = gpu_noise_create(0, 0, 150, 150);
 </string>
           </argument>
         </arguments>
@@ -240,7 +240,7 @@ test1_start_time = get_timer();
 repeat(test_iterations)
 {
     var n = irandom_range(0, 150);
-    val = gpu_noise_perlin(nn, n, n, 0);
+    val = gpu_noise_3d(nn, n, n, 0);
     draw_set_color(make_color_hsv(0, 0, val*255));
     draw_rectangle(x, y, x+150, y+150, false);
 }
@@ -267,7 +267,7 @@ test1_end_time   = get_timer();
             <kind>1</kind>
             <string>///Test2 Pre-test setup
 //Any pre-test setup code should go here, before the timer starts
-nn = gpu_noise_perlin_create(0, 150, 150);
+nn = gpu_noise_create(0, 0, 150, 150);
 </string>
           </argument>
         </arguments>
@@ -296,7 +296,7 @@ test2_start_time = get_timer();
 repeat(test_iterations)
 {
     var n = irandom_range(0, 150);
-    val = gpu_noise_perlin(nn, n, n, n);
+    val = gpu_noise_3d(nn, n, n, n);
     draw_set_color(make_color_hsv(0, 0, val*255));
     draw_rectangle(x, y, x+150, y+150, false);
 
@@ -352,8 +352,8 @@ test3_start_time = get_timer();
 
 repeat(test_iterations)
 {
-    nn = gpu_noise_perlin_create(0, 256, 256);
-    gpu_noise_perlin_free(nn);
+    nn = gpu_noise_create(0, 0, 256, 256);
+    gpu_noise_free(nn);
 }
 test3_end_time   = get_timer();
 
@@ -408,8 +408,8 @@ test4_start_time = get_timer();
 
 repeat(test_iterations)
 {
-    nn = gpu_noise_perlin_create(0, 1024, 1024);
-    gpu_noise_perlin_free(nn);
+    nn = gpu_noise_create(0, 0, 1024, 1024);
+    gpu_noise_free(nn);
 }
 test4_end_time   = get_timer();
 
@@ -464,8 +464,8 @@ test5_start_time = get_timer();
 
 repeat(test_iterations)
 {
-    nn = gpu_noise_perlin_create(0, 2048, 2048);
-    gpu_noise_perlin_free(nn);
+    nn = gpu_noise_create(0, 0, 2048, 2048);
+    gpu_noise_free(nn);
 }
 test5_end_time   = get_timer();
 

@@ -1,4 +1,4 @@
-/// gpu_noise_perlin_free(noıse_object);
+/// gpu_noise_free(noıse_object);
 
 var o = argument0;
 var ret = false;

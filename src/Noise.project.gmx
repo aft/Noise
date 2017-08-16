@@ -589,15 +589,19 @@
         <script>scripts\README.gml</script>
       </scripts>
       <scripts name="GPU Noise">
-        <script>scripts\gpu_noise_perlin_create.gml</script>
-        <script>scripts\gpu_noise_perlin_create_ext.gml</script>
-        <script>scripts\gpu_noise_perlin_1d.gml</script>
-        <script>scripts\gpu_noise_perlin_2d.gml</script>
-        <script>scripts\gpu_noise_perlin_3d.gml</script>
-        <script>scripts\gpu_noise_perlin_offset.gml</script>
-        <script>scripts\gpu_noise_perlin_get_surface.gml</script>
-        <script>scripts\gpu_noise_perlin_calculate.gml</script>
-        <script>scripts\gpu_noise_perlin_free.gml</script>
+        <scripts name="public">
+          <script>scripts\gpu_noise_create.gml</script>
+          <script>scripts\gpu_noise_create_ext.gml</script>
+          <script>scripts\gpu_noise_1d.gml</script>
+          <script>scripts\gpu_noise_2d.gml</script>
+          <script>scripts\gpu_noise_3d.gml</script>
+          <script>scripts\gpu_noise_offset.gml</script>
+          <script>scripts\gpu_noise_to_surface.gml</script>
+          <script>scripts\gpu_noise_free.gml</script>
+        </scripts>
+        <scripts name="private">
+          <script>scripts\_gpu_noise_calculate.gml</script>
+        </scripts>
       </scripts>
     </scripts>
     <scripts name="demo">

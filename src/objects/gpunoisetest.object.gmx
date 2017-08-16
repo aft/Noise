@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>nn = gpu_noise_perlin_create(0, 150, 150);
+            <string>nn = gpu_noise_create(0, 0, 150, 150);
 
 
 </string>
@@ -53,7 +53,7 @@
             <string>// 150x150 buffer lookup = 37 fps
 for (var i=0; i&lt;150; i++) {
     for (var j=0; j &lt; 150; j++) {
-        val = gpu_noise_perlin(nn, i, j, 0);
+        val = gpu_noise_3d(nn, i, j, 0);
         draw_set_color(make_color_hsv(0, 0, val*255));
         draw_point(x+i, y+j);
     }
