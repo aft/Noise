@@ -2,8 +2,8 @@
 <extension>
   <name>NoisePack GPU</name>
   <version>1.0.0</version>
-  <packageID></packageID>
-  <ProductID>ACBD3CFF4E539AD869A0E8E3B4B022DD</ProductID>
+  <packageID>com.cembaspinar.noisegpu</packageID>
+  <ProductID>1B3C90F4C2D96F35399B5AC7B090EFB8</ProductID>
   <date>16/08/17</date>
   <license>Free to use, also for commercial games.</license>
   <description></description>
