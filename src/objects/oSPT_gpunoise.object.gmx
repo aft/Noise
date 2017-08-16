@@ -540,7 +540,7 @@ run_complete_message =  string(Test1Name) + " took: " + string(test1_run_time) +
                         string(Test3Name) + " took: " + string(test3_run_time) + " microseconds (avg " + string_format(test3_run_time/test_iterations, -1, 8) + " microseconds per iteration)#" + 
                         string(Test4Name) + " took: " + string(test4_run_time) + " microseconds (avg " + string_format(test4_run_time/test_iterations, -1, 8) + " microseconds per iteration)#" + 
                         string(Test5Name) + " took: " + string(test5_run_time) + " microseconds (avg " + string_format(test5_run_time/test_iterations, -1, 8) + " microseconds per iteration)##"  + 
-                        string(faster) + " was faster.##" +
+                        "##" +
                         "Press 'Enter' key to run the test again.#" + 
                         "Press 'R' key to re-start the game.";
 </string>

@@ -9,6 +9,7 @@
     <extension index="1">extensions\NoisePack CPU</extension>
     <extension index="2">extensions\cbDataGUI 1.4</extension>
     <extension index="3">extensions\PBuffer - Pixel Buffer</extension>
+    <extension index="4">extensions\NoisePack GPU</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -598,6 +599,7 @@
           <script>scripts\gpu_noise_offset.gml</script>
           <script>scripts\gpu_noise_to_surface.gml</script>
           <script>scripts\gpu_noise_free.gml</script>
+          <script>scripts\README_gpu_noise.gml</script>
         </scripts>
         <scripts name="private">
           <script>scripts\_gpu_noise_calculate.gml</script>

@@ -1,4 +1,13 @@
 /// gpu_noise_create_ext(noisetype, seed, width, height, persistence, frequency, scale);
+/*
+
+Noise Types
+-----------
+0 for Perlin Noise
+1 for Simplex Noise
+2 for Value Noise
+
+*/
 
 var ret;
 ret[0] = argument1; // seed
