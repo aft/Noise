@@ -470,9 +470,6 @@
             <script>scripts\_scr_text_sanitize.gml</script>
             <script>scripts\_scr_text_shorten.gml</script>
             <script>scripts\_scr_text_unsanitize.gml</script>
-            <script>scripts\variable_instance_exists.gml</script>
-            <script>scripts\variable_instance_get.gml</script>
-            <script>scripts\variable_instance_set.gml</script>
           </scripts>
           <scripts name="public">
             <script>scripts\scr_draw_9slices_ext.gml</script>

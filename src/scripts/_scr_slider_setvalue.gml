@@ -2,9 +2,9 @@
 // updates cursorX, value, _perc
 
 if (minLimit != undefined && maxLimit != undefined) {
-    value = clamp(argument0, min(minLimit, maxLimit), max(minLimit, maxLimit));
+    value = clamp(real(argument0), min(minLimit, maxLimit), max(minLimit, maxLimit));
 } else {
-    value = argument0;
+    value = real(argument0);
     minLimit = min(0, value);
     maxLimit = max(0, value);
 }

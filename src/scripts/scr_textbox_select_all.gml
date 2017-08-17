@@ -17,7 +17,7 @@ with (o) {
     if (_txtLen > 0) {
         _selection[@0] = 0;
         _selection[@1] = _txtLen;
-        _scr_textbox_setcursorpos(stop);
+        _scr_textbox_setcursorpos(_txtLen);
         _scr_textbox_setblink();
         return true;
     }

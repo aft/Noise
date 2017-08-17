@@ -14,7 +14,8 @@
  * @see scr_radio_get_value
  * @see scr_radio_set_instance_value
  */
- 
-if (!instance_exists(argument0)) return undefined;
+
+var o = argument0;
+if (!instance_exists(o)) return undefined;
 return o.value;
 
